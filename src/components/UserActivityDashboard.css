@@ -4,7 +4,7 @@ body {
 }
 
 .dashboard {
-  max-width: 600px;
+  max-width: 100%;
   margin: 40px auto;
   background: white;
   padding: 20px;
@@ -128,3 +128,79 @@ body {
    border-radius: 1px;
   
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  background-color: #1976d2;
+  color: white;
+}
+
+
+.app-title {
+  font-size: 24px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: white;
+  color: #1976d2;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.main-container {
+  display: flex;
+  height: calc(100vh - 60px); 
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f5f5f5;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #e0e0e0;
+}
+
+.menu-item.active {
+  background-color: #1976d2;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.page-content {
+  flex: 1;
+  padding: 25px;
+  background-color: #fafafa;
+  overflow-y: auto;
+}
+

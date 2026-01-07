@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./UserActivityDashboard.css";
+import { Link} from 'react-router-dom';
+
 
 export default function UserActivityDashboard() {
   const [activityName, setActivityName] = useState("");
@@ -78,107 +80,134 @@ export default function UserActivityDashboard() {
   ).length;
 
   return (
+    
     <div className="dashboard">
-      <h2 className="title">User Activity Dashboard</h2>
+      <>
+      <nav className="navbar">
+          <div className="nav-left">
+            <h2 class="app-title">ActivityTracker</h2>
+          </div>
+          <div class="navbar-right">
+            <span class="user-name">Username</span>
+            <button class="logout-btn">Logout</button>
+          </div>
+      </nav>
 
-      <input
-        className="input-box"
-        value={activityName}
-        onChange={(e) => setActivityName(e.target.value)}
-        placeholder="Enter activity"
-      />
+      <div class="main-container">
+       
+        <aside class="sidebar">
+          
+          <div class="menu-item active"><Link class="menu-item active" to="/">Home</Link></div>
+          <div class="menu-item"><Link class="menu-item " to="/users">Users</Link></div>
+          <div class="menu-item"><Link class="menu-item " to="/Activity">Activity</Link></div>
+          <div class="menu-item"><Link class="menu-item " to="/Settings">settings</Link></div>
+        </aside>
 
-      {!isFormValid && activityName.length > 0 && (
-        <p className="error">Minimum 3 characters required</p>
-      )}
+        <div class="page-content">
+          <h2 className="title">User Activity Dashboard</h2>
 
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-          <option value="">Select Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-     </select>
-        {!isPriorityValid && <p className="error">Priority is required</p>}
+          <input
+            className="input-box"
+            value={activityName}
+            onChange={(e) => setActivityName(e.target.value)}
+            placeholder="Enter activity"
+          />
 
-      <button
-        onClick={addActivity}
-        disabled={!isFormValid}
-        className={`add-btn ${isFormValid ? "enabled" : "disabled"}`}
-      >
-        Add Activity
-      </button>
+          {!isFormValid && activityName.length > 0 && (
+            <p className="error">Minimum 3 characters required</p>
+          )}
 
-      <div className="stats">
-        <span>Total: {total}</span>
-        <span>Completed: {completed}</span>
-        <span>Pending: {pending}</span>
-        <span>High Priority: {highPriority}</span>
-      </div>
+          <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+              <option value="">Select Priority</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+          </select>
+            {!isPriorityValid && <p className="error">Priority is required</p>}
 
-      <input
-        className="search"
-        placeholder="Search activity..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+          <button
+            onClick={addActivity}
+            disabled={!isFormValid}
+            className={`add-btn ${isFormValid ? "enabled" : "disabled"}`}
+          >
+            Add Activity
+          </button>
 
-      <div className="controls">
-        <button disabled={!total} onClick={() => setFilter("ALL")}>All</button>
-        <button disabled={!total} onClick={() => setFilter("PENDING")}>Pending</button>
-        <button disabled={!total} onClick={() => setFilter("COMPLETED")}>Completed</button>
-
-        <select onChange={(e) => setSortBy(e.target.value)}>
-          <option value="LATEST">Latest First</option>
-          <option value="OLDEST">Oldest First</option>
-          <option value="HIGH">High Priority First</option>
-        </select>
-      </div>
-
-      {activities.length === 0 && (
-        <p className="empty">No activities yet</p>
-      )}
-    <div>
-      {visibleActivities.map((a) => (
-        <div
-          key={a.id}
-          className={`card ${a.completed ? "completed" : ""}`}
-        >
-          <div>
-            <p
-              className={`activity-name ${
-                a.completed ? "completed" : ""
-              }`}
-            >
-              {a.name}
-            </p>
-            <p className="time">Created at {a.time}</p>
+          <div className="stats">
+            <span>Total: {total}</span>
+            <span>Completed: {completed}</span>
+            <span>Pending: {pending}</span>
+            <span>High Priority: {highPriority}</span>
           </div>
 
-          <div className="badge">
-            <span className={`priority ${a.priority.toLowerCase()}`}>
-                {a.priority}
-            </span>
-            <span
-              className={`badge ${
-                a.completed ? "completed" : "pending"
-              }`}
-            >
-              {a.completed ? "Completed" : " Pending"}
-            </span>
+          <input
+            className="search"
+            placeholder="Search activity..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-            <button
-              className="toggle-btn"
-              onClick={() => toggleStatus(a.id)}
-            >
-              Toggle
-            </button>
-            <button className="delete" onClick={() => deleteActivity(a.id)}>
-                Delete
-            </button>
+          <div className="controls">
+            <button disabled={!total} onClick={() => setFilter("ALL")}>All</button>
+            <button disabled={!total} onClick={() => setFilter("PENDING")}>Pending</button>
+            <button disabled={!total} onClick={() => setFilter("COMPLETED")}>Completed</button>
+
+            <select onChange={(e) => setSortBy(e.target.value)}>
+              <option value="LATEST">Latest First</option>
+              <option value="OLDEST">Oldest First</option>
+              <option value="HIGH">High Priority First</option>
+            </select>
           </div>
-        </div>
-      ))}
+
+          {activities.length === 0 && (
+            <p className="empty">No activities yet</p>
+          )}
+        <div>
+          {visibleActivities.map((a) => (
+            <div
+              key={a.id}
+              className={`card ${a.completed ? "completed" : ""}`}
+            >
+              <div>
+                <p
+                  className={`activity-name ${
+                    a.completed ? "completed" : ""
+                  }`}
+                >
+                  {a.name}
+                </p>
+                <p className="time">Created at {a.time}</p>
+              </div>
+
+              <div className="badge">
+                <span className={`priority ${a.priority.toLowerCase()}`}>
+                    {a.priority}
+                </span>
+                <span
+                  className={`badge ${
+                    a.completed ? "completed" : "pending"
+                  }`}
+                >
+                  {a.completed ? "Completed" : " Pending"}
+                </span>
+
+                <button
+                  className="toggle-btn"
+                  onClick={() => toggleStatus(a.id)}
+                >
+                  Toggle
+                </button>
+                <button className="delete" onClick={() => deleteActivity(a.id)}>
+                    Delete
+                </button>
+              </div>
+            </div>
+          ))}
+            </div>
+          </div>
     </div>
+    </>
     </div>
+   
   );
 }
