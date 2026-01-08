@@ -1,3 +1,15 @@
+.page {
+  padding: 20px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+.table-wrapper {
+  background: white;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
 .activity-container {
   max-width: 900px; 
   margin: 0 auto; 
@@ -26,23 +38,86 @@ h2 { text-align: center;
 .activity-table {
   width: 100%; 
   border-collapse: collapse; 
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 15px;
 }
-.activity-table th, .activity-table td { 
-  padding: 12px 15px; 
-  border-bottom: 1px solid #ddd; 
+.activity-table thead {
+  background: #f3f4f6;
+}
+
+.activity-table th {
   text-align: left;
+  padding: 14px;
+  font-weight: 600;
+  color: #374151;
 }
-  .activity-table th { 
-    background-color: #f4f4f4; 
-    font-weight: 600;
-   }
+.activity-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.activity-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* .activity-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.activity-table tbody tr:hover {
+  background: #f9fafb;
+}
   .activity-table tr:hover { 
     background-color: #f9f9f9; 
-  }
+  } */
+.completed-row {
+  opacity: 0.6;
+}
 
+.completed-row .name-cell {
+  text-decoration: line-through;
+}
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
 
-.badge {
+.priority-badge.low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.priority-badge.medium {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.priority-badge.high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-badge.done {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+/* .badge {
    padding: 5px 10px; 
    border-radius: 12px; 
    color: #fff; 
@@ -62,7 +137,7 @@ h2 { text-align: center;
 }
 .status-completed {
    background-color: #2ecc71; 
-  }
+  } */
 
 
 .btn-add { 
@@ -98,7 +173,7 @@ h2 { text-align: center;
 
 .activity-header h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 26px;
   color: #111827;
 }
 
@@ -106,9 +181,10 @@ h2 { text-align: center;
   background: #2563eb;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 15px;
   font-weight: 500;
   transition: background 0.2s, transform 0.1s;
 }
@@ -125,30 +201,31 @@ h2 { text-align: center;
   flex-wrap: wrap;
   align-items: center;
 }
-.controls input[type="text"] {
+
+.controls input {
   flex: 1;
-  min-width: 200px;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
+  min-width: 220px;
+  padding: 10px 14px;
   border-radius: 8px;
-  font-size: 16px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.controls input[type="text"]:focus {
+.controls input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 .controls select {
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
+  padding: 10px 14px;
   border-radius: 8px;
-  font-size: 16px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
   outline: none;
-  transition: border-color 0.2s;
   cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .controls select:focus {
@@ -168,9 +245,8 @@ h2 { text-align: center;
   margin-right: 6px;
 }
 
-/* Toggle button */
 .activity-table button.toggle {
-  background: #16a34a; /* green */
+  background: #16a34a; 
   color: white;
 }
 
@@ -179,9 +255,8 @@ h2 { text-align: center;
   transform: scale(1.05);
 }
 
-/* Delete button */
 .activity-table button.delete {
-  background: #dc2626; /* red */
+  background: #dc2626; 
   color: white;
 }
 
@@ -196,4 +271,45 @@ h2 { text-align: center;
 
 .activity-table button i {
   margin-right: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions .toggle {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.actions .toggle.completed {
+  background: #6b7280;
+}
+
+.actions .toggle:hover {
+  background: #15803d;
+  transform: scale(1.05);
+}
+
+.actions .delete {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.actions .delete:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
 }

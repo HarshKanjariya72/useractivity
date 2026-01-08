@@ -1,17 +1,53 @@
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
 .card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   padding: 20px;
+  border-radius: 16px;
   color: white;
-  border-radius: 12px;
-  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
-.blue { background: #2563eb; }
-.green { background: #16a34a; }
-.orange { background: #ea580c; }
-.red { background: #dc2626; }
+.blue { background:linear-gradient(135deg, #2563eb, #3b82f6)}
+.green { background: linear-gradient(135deg, #16a34a, #22c55e)}
+.orange { background:linear-gradient(135deg, #ea580c, #fb923c) }
+.red { background:linear-gradient(135deg, #dc2626, #f87171)}
+
+.dashboard-title {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #111827;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+}
+.card-icon {
+  font-size: 32px;
+  background: rgba(255,255,255,0.2);
+  padding: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.card h3 {
+  margin: 4px 0 0;
+  font-size: 28px;
+  font-weight: bold;
+}

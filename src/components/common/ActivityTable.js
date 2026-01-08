@@ -4,6 +4,7 @@ export default function ActivityTable({ activities = [], onToggle, onDelete }) {
   }
 
   return (
+  <div className="table-wrapper">
     <table className="activity-table">
       <thead>
         <tr>
@@ -11,14 +12,14 @@ export default function ActivityTable({ activities = [], onToggle, onDelete }) {
           <th>Priority</th>
           <th>Status</th>
           <th>Date</th>
-          <th>Actions</th>
+          <th className="action-col">Actions</th>
         </tr>
       </thead>
 
       <tbody>
         {activities.map(a => (
           <tr key={a.id} className={a.completed ? "completed-row" : ""}>
-            <td className={a.completed ? "completed-text" : ""}>{a.name}</td>
+            <td className="name-cell">{a.name}</td>
 
             <td>
               <span className={`priority ${a.priority?.toLowerCase() || ""}`}>
@@ -26,14 +27,20 @@ export default function ActivityTable({ activities = [], onToggle, onDelete }) {
               </span>
             </td>
 
-            <td>{a.completed ? "Completed" : "Pending"}</td>
+            <td>
+              <span className={`status-badge ${a.completed ? "done" : "pending"}`}>
+                  {a.completed ? "Completed" : "Pending"}
+              </span>
+            </td>
             <td>{a.createdAt || "-"}</td>
 
-            <td>
-                <button className="toggle" onClick={() => onToggle?.(a.id)}>
+            <td className="action">
+                <button className={`toggle ${a.completed ? "completed" : ""}`}
+                  onClick={() => onToggle(a.id)}>
                   Toggle
                 </button>
-                <button className="delete" onClick={() => onDelete?.(a.id)}>
+                <button className="delete"
+                  onClick={() => onDelete(a.id)}>
                   Delete
                 </button>
             </td>
@@ -41,6 +48,7 @@ export default function ActivityTable({ activities = [], onToggle, onDelete }) {
         ))}
       </tbody>
     </table>
+  </div>
   );
 }
 

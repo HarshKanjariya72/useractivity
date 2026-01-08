@@ -72,7 +72,6 @@
   transform: scale(1.03);
 }
 
-/* Cancel button */
 .modal-actions button:last-child {
   background: #e5e7eb;
   color: #111827;
@@ -88,7 +87,6 @@
   transform: scale(1.03);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

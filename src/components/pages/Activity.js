@@ -22,7 +22,7 @@ export default function Activity({ activities = [], onAdd, onToggle, onDelete })
     <div className="page">
       <div className="activity-header">
         <h2>Activities</h2>
-        <button className="add-btn" onClick={() => setShowModal(true)}>+ Add</button>
+        <button className="add-btn" onClick={() => setShowModal(true)}>+ Add Activity</button>
       </div>
 
       <div className="controls">

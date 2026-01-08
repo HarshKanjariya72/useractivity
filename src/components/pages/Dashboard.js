@@ -1,4 +1,5 @@
 import "./Dashboard.css";
+import { FaListAlt, FaCheckCircle, FaClock, FaExclamationTriangle } from "react-icons/fa";
 
 export default function Dashboard({ activities }) {
   const total = activities.length;
@@ -11,10 +12,31 @@ export default function Dashboard({ activities }) {
       <h2>Activity Dashboard</h2>
 
       <div className="cards">
-        <div className="card blue">Total <br /><b>{total}</b></div>
-        <div className="card green">Completed<br /><b>{completed}</b></div>
-        <div className="card orange">Pending<br /><b>{pending}</b></div>
-        <div className="card red">High Priority<br /><b>{high}</b></div>
+        <div className="card blue">
+          <div className="card-icon"><FaListAlt /></div>
+          <div><p>Total Activity</p><h3>{total}</h3></div>
+        </div>
+        <div className="card green">
+          <div className="card-icon"><FaCheckCircle /></div>
+          <div>
+            <p>Completed</p>
+            <h3>{completed}</h3>
+          </div>
+        </div>
+        <div className="card orange">
+          <div className="card-icon"><FaClock /></div>
+          <div>
+            <p>Pending</p>
+            <h3>{pending}</h3>
+          </div>
+        </div>
+        <div className="card red">
+          <div className="card-icon"><FaExclamationTriangle /></div>
+          <div>
+            <p>High Priority</p>
+            <h3>{high}</h3>
+          </div>
+        </div>
       </div>
     </div>
   );
