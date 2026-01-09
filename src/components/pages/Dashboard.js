@@ -1,15 +1,28 @@
 import "./Dashboard.css";
-import { FaListAlt, FaCheckCircle, FaClock, FaExclamationTriangle } from "react-icons/fa";
+import { FaListAlt, FaCheckCircle, FaClock, FaExclamationTriangle,FaSignOutAlt, FaRegUser } from "react-icons/fa";
 
 export default function Dashboard({ activities }) {
   const total = activities.length;
   const completed = activities.filter(a => a.completed).length;
   const pending = total - completed;
   const high = activities.filter(a => a.priority === "High").length;
+   const handleLogout = () => {
+    alert("Logged out successfully");
+  };
 
   return (
     <div className="page">
-      <h2>Activity Dashboard</h2>
+      <div className="dashboard-navbar">
+        <div className="nav-left">
+          <h3>Activity Dashboard</h3>
+        </div>
+        <div className="nav-right">
+          <span className="nav-user"><FaRegUser /> User</span>
+          <button className="logout-btn" onClick={handleLogout}>
+            <FaSignOutAlt /> Logout
+          </button>
+        </div>
+      </div>
 
       <div className="cards">
         <div className="card blue">
