@@ -33,7 +33,7 @@ export default function Activity({ activities = [], onAdd, onToggle, onDelete })
           onChange={e => setSearch(e.target.value)}
         />
 
-        <select value={filter} onChange={e => setFilter(e.target.value)}>
+        <select className="custom-select" value={filter} onChange={e => setFilter(e.target.value)}>
           <option value="ALL">All</option>
           <option value="COMPLETED">Completed</option>
           <option value="PENDING">Pending</option>
