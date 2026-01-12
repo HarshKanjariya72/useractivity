@@ -1,9 +1,13 @@
 import { useState } from "react";
 import ActivityTable from "../common/ActivityTable";
 import AddActivityModal from "../common/AddActivityModal";
+import { useActivities } from "../../context/ActivityContext";
 import "./Activity.css";
 
-export default function Activity({ activities = [], onAdd, onToggle, onDelete }) {
+const API_URL = "http://localhost:3001/activities";
+
+export default function Activity() {
+  const { activities, addActivity, toggleActivity, deleteActivity } = useActivities();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("ALL");
   const [showModal, setShowModal] = useState(false);
@@ -42,14 +46,15 @@ export default function Activity({ activities = [], onAdd, onToggle, onDelete })
 
       <ActivityTable
         activities={filtered}
-        onToggle={onToggle}
-        onDelete={onDelete}
+        onAdd={addActivity}
+        onToggle={toggleActivity}
+        onDelete={deleteActivity}
       />
 
       {showModal && (
         <AddActivityModal
           onClose={() => setShowModal(false)}
-          onAdd={onAdd}
+          onAdd={addActivity}
         />
       )}
     </div>

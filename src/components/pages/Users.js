@@ -1,5 +1,7 @@
 import "./Users.css";
 import { FaUserEdit, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext.";
 
 export default function User() {
   const user = {
@@ -15,9 +17,12 @@ export default function User() {
   const handleEdit = () => {
     alert("Edit Profile Clicked");
   };
+  const {  logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    alert("Logged out successfully");
+    logout();
+    navigate("/login");
   };
 
   return (

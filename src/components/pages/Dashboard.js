@@ -1,26 +1,29 @@
 import "./Dashboard.css";
 import { FaListAlt, FaCheckCircle, FaClock, FaExclamationTriangle,FaSignOutAlt, FaRegUser } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext.";
-
+import { useActivities } from "../../context/ActivityContext";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Dashboard({ activities }) {
+const API_URL ="http://localhost:3001/activities";
+
+
+export default function Dashboard() {
+  const {activities, loading} = useActivities();
   const total = activities.length;
   const completed = activities.filter(a => a.completed).length;
   const pending = total - completed;
   const high = activities.filter(a => a.priority === "High").length;
-  //  const handleLogout = () => {
-  //   alert("Logged out successfully");
-  // };
   
-  const { user, logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   navigate("/login");
+  // };
+
+  if (loading) return <p>Loading...</p>;
 
 
   return (
@@ -29,13 +32,6 @@ export default function Dashboard({ activities }) {
         <div className="nav-left">
           <h3>Activity Dashboard</h3>
         </div>
-        {/* <div className="nav-right">
-          <span className="nav-user"><FaRegUser /> User</span>
-          {user && <button onClick={logout}>Logout</button>}
-          <button className="logout-btn" onClick={handleLogout}>
-            <FaSignOutAlt /> Logout
-          </button>
-        </div> */}
         <div className="nav-right">
           {user && (
             <>
@@ -43,7 +39,7 @@ export default function Dashboard({ activities }) {
                 <FaRegUser /> {user.email}
               </span>
 
-              <button className="logout-btn" onClick={handleLogout}>
+              <button className="logout-btn" onClick={logout}>
                 <FaSignOutAlt /> Logout
               </button>
             </>

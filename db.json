@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "email": "xyz@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "email": "aaa@gmail.com",
+      "password": "789"
+    },
+    {
+      "id": "992a",
+      "email": "mnb@gmail.com",
+      "password": "456"
+    },
+    {
+      "id": "4ed3",
+      "email": "bbb@gmail.com",
+      "password": "456"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "name": "Learn React",
+      "priority": "High",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Build Dashboard",
+      "priority": "Medium",
+      "completed": true,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Fix Bugs",
+      "priority": "Low",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": "2bf6",
+      "name": "sleep",
+      "priority": "Medium",
+      "completed": false,
+      "userId": 2
+    }
+  ]
+}
