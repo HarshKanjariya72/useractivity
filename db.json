@@ -23,6 +23,12 @@
       "name": "harsh",
       "email": "harsh@gmail.com",
       "password": "9900"
+    },
+    {
+      "id": "8144",
+      "name": "jay",
+      "email": "jay@gmail.com",
+      "password": "111"
     }
   ],
   "activities": [
@@ -44,7 +50,7 @@
       "id": "3",
       "name": "Fix Bugs",
       "priority": "Low",
-      "completed": false,
+      "completed": true,
       "userId": 2
     },
     {
@@ -88,6 +94,20 @@
       "priority": "Medium",
       "completed": true,
       "userId": "3c05"
+    },
+    {
+      "id": "e937",
+      "name": "code",
+      "priority": "Medium",
+      "completed": true,
+      "userId": "8144"
+    },
+    {
+      "id": "93da",
+      "name": "eat",
+      "priority": "High",
+      "completed": false,
+      "userId": "8144"
     }
   ]
 }
