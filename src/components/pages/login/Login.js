@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useAuth } from "../../../context/AuthContext.";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext.";
 import "./login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); 
 
     try {
       const res = await fetch(
@@ -25,12 +25,11 @@ export default function Login() {
         return;
       }
 
-      login({ ...data[0], id: Number(data[0].id) });
+      login(data[0]);
 
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (err) {
-      console.error("Login error:", err);
-      setError("Something went wrong. Please try again.");
+      setError("Server error. Try again.");
     }
   };
 
@@ -52,7 +51,7 @@ export default function Login() {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -61,7 +60,7 @@ export default function Login() {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
@@ -71,7 +70,7 @@ export default function Login() {
         </form>
 
         <p className="register-link">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don&apos;t have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

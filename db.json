@@ -1,48 +1,47 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
+      "name": "John Doe",
       "email": "test@gmail.com",
       "password": "1234"
     },
     {
-      "id": 2,
+      "id": "2",
+      "name": "Jane Smith",
       "email": "xyz@gmail.com",
       "password": "123"
     },
     {
-      "id": 3,
-      "email": "aaa@gmail.com",
-      "password": "789"
-    },
-    {
-      "id": "992a",
-      "email": "mnb@gmail.com",
+      "id": "30e1",
+      "name": "Alice Johnson",
+      "email": "jp@gmail.com",
       "password": "456"
     },
     {
-      "id": "4ed3",
-      "email": "bbb@gmail.com",
-      "password": "456"
+      "id": "3c05",
+      "name": "harsh",
+      "email": "harsh@gmail.com",
+      "password": "9900"
     }
   ],
   "activities": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Learn React",
       "priority": "High",
       "completed": false,
       "userId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Build Dashboard",
       "priority": "Medium",
       "completed": true,
       "userId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Fix Bugs",
       "priority": "Low",
       "completed": false,
@@ -54,6 +53,41 @@
       "priority": "Medium",
       "completed": false,
       "userId": 2
+    },
+    {
+      "id": "bd3d",
+      "name": "eat",
+      "priority": "Medium",
+      "completed": false,
+      "userId": "10d7"
+    },
+    {
+      "id": "5960",
+      "name": "Learn react",
+      "priority": "High",
+      "completed": false,
+      "userId": "29c9"
+    },
+    {
+      "id": "e77a",
+      "name": "sleep",
+      "priority": "Medium",
+      "completed": false,
+      "userId": "29c9"
+    },
+    {
+      "id": "04d4",
+      "name": "code",
+      "priority": "High",
+      "completed": false,
+      "userId": "3c05"
+    },
+    {
+      "id": "2c92",
+      "name": "sleep",
+      "priority": "Medium",
+      "completed": true,
+      "userId": "3c05"
     }
   ]
 }

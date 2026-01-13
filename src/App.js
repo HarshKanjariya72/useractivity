@@ -16,7 +16,6 @@ export default function App() {
   const [activities, setActivities] = useState([]);
   const { user } = useAuth();
 
-  // Fetch user-specific activities
   useEffect(() => {
     if (!user?.id) {
       setActivities([]);
@@ -29,7 +28,6 @@ export default function App() {
       .catch(err => console.error("Failed to fetch activities:", err));
   }, [user?.id]);
 
-  // Add new activity
   const addActivity = async (activity) => {
     if (!user?.id) return;
 
@@ -51,7 +49,6 @@ export default function App() {
     setActivities(prev => [...prev, saved]);
   };
 
-  // Toggle completed status
   const toggleActivity = async (id, completed) => {
     const res = await fetch(`${API_URL}/${id}`, {
       method: "PATCH",
@@ -66,7 +63,7 @@ export default function App() {
     }
   };
 
-  // Delete activity
+
   const deleteActivity = async (id) => {
     const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
 
@@ -75,7 +72,6 @@ export default function App() {
     }
   };
 
-  // Hide sidebar on login/register pages
   const location = useLocation();
   const hideSidebar = location.pathname === "/login" || location.pathname === "/register";
 
@@ -85,11 +81,10 @@ export default function App() {
 
       <div style={{ flex: 1, padding: "20px" }}>
         <Routes>
-          {/* Public Routes */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Routes */}
           <Route
             path="/"
             element={

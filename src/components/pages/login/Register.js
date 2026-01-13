@@ -6,6 +6,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [name,setName]= useState();
   // const [confirmPassword, setConfirmPassword] = useState("");
   // const [error, setError] = useState("");
   // const [success, setSuccess] = useState(false);
@@ -38,7 +39,7 @@ export default function Register() {
     await fetch("http://localhost:3001/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ name,email, password })
     });
 
     navigate("/login");
@@ -51,6 +52,9 @@ export default function Register() {
         <h2 className="login-title">Registration</h2>
 
         <form onSubmit={handleRegister} className="login-form">
+          <label>Name</label>
+          <input placeholder="Username" value={name} onChange={e => setName(e.target.value)} required/>
+
           <label>Email</label>
           <input placeholder="Email" onChange={e => setEmail(e.target.value)} />
 
